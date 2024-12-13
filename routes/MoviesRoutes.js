@@ -8,6 +8,7 @@ const MoviesController = require('../controllers/MoviesController')
 router.get('/', MoviesController.index)
 // Route per ottenere i dettagli di un singolo film tramite il suo ID
 router.get('/:id', MoviesController.show)
-
+// Route per creare una nuova recensione per un film
+router.post('/:id/review', MoviesController.createReview)
 // Esporto il router per renderlo disponibile ad altri moduli
 module.exports = router
