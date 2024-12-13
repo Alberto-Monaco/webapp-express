@@ -55,13 +55,10 @@ function show(req, res) {
 function createReview(req, res) {
 	const movie_id = Number(req.params.id)
 	const { name, text, vote } = req.body
-	const now = timestamp()
 
+	const sql = `INSERT INTO reviews (movie_id, name, text, vote, created_at) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)`
 
-
-	const sql = `INSERT INTO reviews (movie_id, name, text, vote, created_at) VALUES (?, ?, ?, ?, ?)`
-
-	connection.query(sql, [movie_id, name, text, vote, now], (err, results) => {
+	connection.query(sql, [movie_id, name, text, vote], (err, results) => {
 		if (err) return res.status(500).json({ err: err })
 		return res.status(201).json({ success: true })
 	})
