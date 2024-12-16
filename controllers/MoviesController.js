@@ -26,7 +26,7 @@ function show(req, res) {
 	const sql = `SELECT * FROM movies WHERE id = ?`
 
 	// Query SQL per selezionare le recensioni del film
-	const reviewsSql = `SELECT * FROM reviews WHERE movie_id=?`
+	const reviewsSql = `SELECT * FROM reviews WHERE movie_id=? ORDER BY created_at DESC`
 
 	// Eseguo la query per ottenere il film
 	connection.query(sql, [id], (err, results) => {
